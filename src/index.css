@@ -1,0 +1,265 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+    body {
+        @apply bg-gray-50;
+    }
+
+    h1 {
+        @apply text-4xl font-bold;
+    }
+
+    h2 {
+        @apply text-3xl font-semibold;
+    }
+
+    h3 {
+        @apply text-2xl font-semibold;
+    }
+}
+
+/* Custom components */
+@layer components {
+    .btn-primary {
+        @apply bg-blue-700 text-white px-6 py-2 rounded-lg hover:bg-blue-800 transition-colors;
+    }
+
+    .btn-secondary {
+        @apply border-2 border-blue-700 text-blue-700 px-6 py-2 rounded-lg hover:bg-blue-700 hover:text-white transition-colors;
+    }
+
+    .form-input {
+        @apply w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+    }
+
+    .nav-link {
+        @apply text-gray-700 hover:text-blue-600 px-3 py-2 font-medium transition-colors;
+    }
+}
+
+/* Map aspect ratio */
+.aspect-w-16 {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.aspect-w-16 > iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* Container styles */
+.container-custom {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Card styles */
+.card {
+    @apply bg-white rounded-lg shadow-md p-6 transition-shadow hover:shadow-lg;
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.5s ease-out;
+}
+
+.slide-in-right {
+    animation: slideInRight 0.5s ease-out;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Hover animations */
+.hover-lift {
+    transition: transform 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-8px);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Pulse animation for CTA buttons */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+/* Stagger animation for list items */
+.stagger-animate > * {
+    opacity: 0;
+    animation: staggerFade 0.5s ease forwards;
+}
+
+.stagger-animate > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-animate > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-animate > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-animate > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-animate > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes staggerFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Service card hover effects */
+.service-card {
+    @apply transform transition-transform duration-300 hover:-translate-y-1;
+}
+
+/* Header shadow on scroll */
+.header-shadow {
+    @apply shadow-md transition-shadow duration-300;
+}
+
+/* Form focus states */
+.form-focus {
+    @apply focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none;
+}
+
+/* Image optimizations */
+.img-fluid {
+    @apply w-full h-auto object-cover;
+}
+
+/* Typography utilities */
+.text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-700 to-blue-900;
+}
+
+/* Responsive navigation */
+.mobile-nav {
+    @apply fixed inset-0 bg-white z-50 transform transition-transform duration-300;
+}
+
+.mobile-nav.open {
+    @apply translate-x-0;
+}
+
+.mobile-nav.closed {
+    @apply translate-x-full;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-blue-700 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-blue-800;
+}
+
+/* Loading states */
+.loading {
+    @apply animate-pulse bg-gray-200;
+}
+
+/* Error states */
+.error-input {
+    @apply border-red-500 focus:ring-red-500;
+}
+
+.error-message {
+    @apply text-red-500 text-sm mt-1;
+}
+
+/* Success states */
+.success-input {
+    @apply border-green-500 focus:ring-green-500;
+}
+
+.success-message {
+    @apply text-green-500 text-sm mt-1;
+}
