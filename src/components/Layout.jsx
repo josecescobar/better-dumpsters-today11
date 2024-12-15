@@ -39,7 +39,7 @@ const Layout = ({ children }) => {
                         <div className="hidden md:flex items-center">
                             <a href="tel:240-960-6005" className="flex items-center text-blue-700 hover:text-blue-500">
                                 <Phone className="w-5 h-5 mr-2" />
-                                <span className="font-semibold">301-213-7300</span>
+                                <span className="font-semibold">240-960-6005</span>
                             </a>
                         </div>
 
@@ -109,7 +109,7 @@ const Layout = ({ children }) => {
                         <div>
                             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
                             <div className="space-y-2">
-                                <a href="tel:301-213-7300" className="hover:text-blue-400">
+                                <a href="tel:240-960-6005" className="hover:text-blue-400">
                                     240-960-6005
                                 </a>
                                 <br />
