@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { ChevronRight } from 'lucide-react';
 
@@ -9,7 +10,7 @@ const HomePage = () => {
             <section className="bg-[#1e40af] text-white py-24">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <img
-                        src="/src/assets/images/logo-white1.jpg"
+                        src="/better-dumpsters-today11/images/logo-white1.jpg"
                         alt="Better Dumpsters Today Logo"
                         className="mx-auto mb-12 max-w-[400px]"
                     />
@@ -20,14 +21,14 @@ const HomePage = () => {
                         Professional dumpster rentals, excavation, and hauling services tailored to your needs.
                     </p>
                     <div className="flex flex-col sm:flex-row justify-center gap-6">
-                        <a href="#quote-form"
-                           className="bg-[#1e3a8a] text-white px-8 py-3 rounded-md font-semibold hover:bg-[#1e4620] transition">
+                        <Link to="/contact"
+                              className="bg-[#1e3a8a] text-white px-8 py-3 rounded-md font-semibold hover:bg-[#1e4620] transition">
                             Get a Free Quote
-                        </a>
-                        <a href="/services"
-                           className="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-[#1e40af] transition">
+                        </Link>
+                        <Link to="/services"
+                              className="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-[#1e40af] transition">
                             Explore Services
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -61,7 +62,7 @@ const HomePage = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="bg-white rounded-lg shadow-md overflow-hidden">
                             <img
-                                src="/src/assets/images/dumpster2.jpg"
+                                src="/better-dumpsters-today11/images/dumpster2.jpg"
                                 alt="Roll-off Dumpster"
                                 className="w-full h-48 object-cover"
                             />
@@ -73,7 +74,7 @@ const HomePage = () => {
 
                         <div className="bg-white rounded-lg shadow-md overflow-hidden">
                             <img
-                                src="/src/assets/images/IMG_3371.jpg"
+                                src="/better-dumpsters-today11/images/IMG_3371.jpg"
                                 alt="CAT Excavator"
                                 className="w-full h-48 object-cover"
                             />
@@ -85,7 +86,7 @@ const HomePage = () => {
 
                         <div className="bg-white rounded-lg shadow-md overflow-hidden">
                             <img
-                                src="/src/assets/images/IMG_3372.jpg"
+                                src="/better-dumpsters-today11/images/IMG_3372.jpg"
                                 alt="Dump Truck"
                                 className="w-full h-48 object-cover"
                             />
@@ -97,13 +98,13 @@ const HomePage = () => {
                     </div>
 
                     <div className="text-center mt-8">
-                        <a
-                            href="/services"
+                        <Link
+                            to="/services"
                             className="inline-flex items-center text-blue-700 hover:text-blue-900 font-semibold"
                         >
                             View Full Equipment List and Pricing
                             <ChevronRight className="w-5 h-5 ml-1" />
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -130,9 +131,9 @@ const ServiceCard = ({ title, description }) => (
     <div className="bg-gray-50 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow">
         <h3 className="text-xl font-bold mb-2">{title}</h3>
         <p className="text-gray-600 mb-4">{description}</p>
-        <a href="/services" className="text-blue-600 hover:text-blue-800 flex items-center">
+        <Link to="/services" className="text-blue-600 hover:text-blue-800 flex items-center">
             Learn More <ChevronRight className="w-5 h-5 ml-1" />
-        </a>
+        </Link>
     </div>
 );
 

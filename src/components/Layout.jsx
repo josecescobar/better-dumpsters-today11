@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Menu, X, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Menu, X, Phone } from 'lucide-react';
 
 const Layout = ({ children }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,7 @@ const Layout = ({ children }) => {
                         <div className="flex-shrink-0">
                             <Link to="/">
                                 <img
-                                    src="/src/assets/images/logo-clear-2.jpg"
+                                    src="/better-dumpsters-today11/images/logo-clear-2.jpg"
                                     alt="Better Dumpsters Today Logo"
                                     className="h-16 w-auto"
                                 />
@@ -28,6 +28,9 @@ const Layout = ({ children }) => {
                             <Link to="/services" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
                                 Services & Pricing
                             </Link>
+                            <Link to="/about" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
+                                About Us
+                            </Link>
                             <Link to="/contact" className="text-gray-700 hover:text-blue-600 px-3 py-2 font-medium">
                                 Contact
                             </Link>
@@ -36,7 +39,7 @@ const Layout = ({ children }) => {
                         <div className="hidden md:flex items-center">
                             <a href="tel:240-960-6005" className="flex items-center text-blue-700 hover:text-blue-500">
                                 <Phone className="w-5 h-5 mr-2" />
-                                <span className="font-semibold">240-960-6005</span>
+                                <span className="font-semibold">301-213-7300</span>
                             </a>
                         </div>
 
@@ -69,12 +72,26 @@ const Layout = ({ children }) => {
                                 Services & Pricing
                             </Link>
                             <Link
+                                to="/about"
+                                className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                About Us
+                            </Link>
+                            <Link
                                 to="/contact"
                                 className="block px-3 py-2 text-base font-medium text-gray-700 hover:text-blue-600"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 Contact
                             </Link>
+                            <a
+                                href="tel:240-960-6005"
+                                className="block px-3 py-2 text-base font-medium text-blue-700 hover:text-blue-600"
+                            >
+                                <Phone className="w-5 h-5 inline mr-2" />
+                                240-960-6005
+                            </a>
                         </div>
                     </div>
                 )}
@@ -92,7 +109,7 @@ const Layout = ({ children }) => {
                         <div>
                             <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
                             <div className="space-y-2">
-                                <a href="tel:240-960-6005" className="hover:text-blue-400">
+                                <a href="tel:301-213-7300" className="hover:text-blue-400">
                                     240-960-6005
                                 </a>
                                 <br />
@@ -109,6 +126,15 @@ const Layout = ({ children }) => {
                                 <li><Link to="/services" className="hover:text-blue-400">Services</Link></li>
                                 <li><Link to="/contact" className="hover:text-blue-400">Contact</Link></li>
                             </ul>
+                        </div>
+
+                        <div>
+                            <h3 className="text-xl font-semibold mb-4">Service Hours</h3>
+                            <div className="space-y-2">
+                                <p>Monday - Friday: 7:00 AM - 5:00 PM</p>
+                                <p>Saturday: 8:00 AM - 2:00 PM</p>
+                                <p>Sunday: Closed</p>
+                            </div>
                         </div>
                     </div>
 
