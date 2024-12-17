@@ -80,6 +80,25 @@ const ServicesPage = () => {
                         </div>
                     </div>
 
+                    {/* Concrete Delivery Services */}
+                    <section className="py-16 bg-gray-50" id="concrete-delivery">
+                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div className="text-center mb-12">
+                                <h2 className="text-3xl font-bold mb-4">Concrete Delivery Services</h2>
+                                <p className="text-gray-600">Reliable concrete delivery at competitive pricing</p>
+                            </div>
+                            <div className="bg-white p-8 rounded-xl shadow-xl text-center">
+                                <h3 className="text-2xl font-bold mb-4">Pricing</h3>
+                                <p className="text-lg text-gray-700 mb-2">
+                                    <strong>$190</strong> per yard
+                                </p>
+                                <p className="text-lg text-gray-700">
+                                    <strong>$200</strong> delivery fee
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
                     {/* Important Notes */}
                     <div className="bg-blue-50 rounded-xl p-8">
                         <h3 className="text-2xl font-bold mb-6 flex items-center">
@@ -186,7 +205,7 @@ const ServicesPage = () => {
                     <p className="text-xl mb-8">Contact us today for a custom quote</p>
                     <a
                         href="tel:240-960-6005"
-                        className="inline-flex items-center bg-white text-blue-700 px-8 py-3 rounded-lg font-bold 
+                        className="inline-flex items-center bg-white text-blue-700 px-8 py-3 rounded-lg font-bold
                                  hover:bg-opacity-90 transform transition-all hover:-translate-y-1 hover:shadow-lg"
                     >
                         <PhoneCall className="w-6 h-6 mr-2" />
