@@ -69,7 +69,7 @@ const ServicesPage = () => {
                             <div>
                                 <h4 className="text-lg font-semibold mb-4">Additional Charges</h4>
                                 <ul className="space-y-3">
-                                    <PriceListItem title="Overage Charges" price="125" note="per ton" />
+                                    <PriceListItem title="Overage Charges" price="100" note="per ton" />
                                     <PriceListItem title="Trip Coverage" price="125" note="for overloaded/blocked dumpsters" />
                                     <PriceListItem title="Relocation" price="125" note="on-site without dumping" />
                                     <PriceListItem title="Wait Charge" price="100" note="per hour after 15 minutes" />
@@ -243,29 +243,29 @@ const dumpsterSizes = [
     {
         size: "40",
         dimensions: "22' X 8' X 8'",
-        price: "900",
-        tons: "5",
+        price: "600",
+        tons: "2",
         features: ["Ideal for large projects", "Perfect for construction", "Multiple week rental"]
     },
     {
         size: "30",
         dimensions: "22' X 8' X 6'",
-        price: "750",
-        tons: "4",
+        price: "550",
+        tons: "2",
         features: ["Great for renovations", "Commercial use", "Heavy debris"]
     },
     {
         size: "25",
         dimensions: "22' X 8' X 6'",
-        price: "700",
-        tons: "3",
+        price: "525",
+        tons: "1",
         features: ["Medium projects", "Residential use", "Mixed waste"]
     },
     {
         size: "20",
         dimensions: "22' X 8' X 4'",
-        price: "650",
-        tons: "2.5",
+        price: "500",
+        tons: "1",
         features: ["Small projects", "Yard waste", "Household cleanouts"]
     }
 ];
