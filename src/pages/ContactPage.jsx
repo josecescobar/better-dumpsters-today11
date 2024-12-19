@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import { Phone, Mail, MapPin, CreditCard, CalendarDays, Clock, AlertCircle } from 'lucide-react';
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const ContactPage = () => {
     const [formType, setFormType] = useState('contact'); // 'contact' or 'creditCard'
@@ -37,7 +38,7 @@ const ContactPage = () => {
                                     : 'bg-white text-blue-700 hover:bg-blue-50'
                             }`}
                         >
-                            Credit Card Authorization
+                            Payment
                         </button>
                     </div>
                 </div>
@@ -56,8 +57,8 @@ const ContactPage = () => {
                                 </>
                             ) : (
                                 <>
-                                    <h2 className="text-2xl font-bold mb-6">Credit Card Authorization</h2>
-                                    <CreditCardForm />
+                                    <h2 className="text-2xl font-bold mb-6">Make a Payment</h2>
+                                    <PaymentForm />
                                 </>
                             )}
                         </div>
@@ -80,8 +81,8 @@ const ContactPage = () => {
                                         <Mail className="w-6 h-6 text-blue-700 mr-4" />
                                         <div>
                                             <p className="font-semibold">Email</p>
-                                            <a href="mailto:info@betterdumpsters.com" className="text-blue-700 hover:text-blue-900">
-                                                info@betterdumpsters.com
+                                            <a href="mailto:betterdumpsterstoday@gmail.com" className="text-blue-700 hover:text-blue-900">
+                                                betterdumpsterstoday@gmail.com
                                             </a>
                                         </div>
                                     </div>
@@ -191,6 +192,7 @@ const ContactForm = () => (
                 <option value="dumpster">Dumpster Services</option>
                 <option value="excavation">Excavation & Land Clearing</option>
                 <option value="hauling">Dump Trucking & Hauling</option>
+                <option value="concrete">Concrete Services</option>
             </select>
         </div>
 
@@ -223,97 +225,72 @@ const ContactForm = () => (
     </form>
 );
 
-// Credit Card Authorization Form Component
-const CreditCardForm = () => (
-    <form className="space-y-6">
-        <div>
-            <label htmlFor="cardName" className="block text-sm font-medium text-gray-700 mb-1">Name on Card</label>
-            <input
-                type="text"
-                id="cardName"
-                name="cardName"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-            />
-        </div>
+// Payment Form Component
+const PaymentForm = () => {
+    const [amount, setAmount] = useState('0');
 
-        <div>
-            <label htmlFor="cardNumber" className="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
-            <input
-                type="text"
-                id="cardNumber"
-                name="cardNumber"
-                maxLength="16"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-            />
-        </div>
-
-        <div className="grid grid-cols-2 gap-4">
+    return (
+        <div className="space-y-6">
             <div>
-                <label htmlFor="expDate" className="block text-sm font-medium text-gray-700 mb-1">Expiration Date</label>
+                <label htmlFor="amount" className="block text-lg font-medium text-gray-700 mb-2">
+                    Amount to Pay
+                </label>
                 <input
-                    type="text"
-                    id="expDate"
-                    name="expDate"
-                    placeholder="MM/YY"
-                    maxLength="5"
+                    type="number"
+                    id="amount"
+                    value={amount}
+                    onChange={(e) => setAmount(e.target.value)}
+                    min="0"
+                    step="0.01"
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     required
                 />
             </div>
-            <div>
-                <label htmlFor="cvv" className="block text-sm font-medium text-gray-700 mb-1">CVV</label>
-                <input
-                    type="text"
-                    id="cvv"
-                    name="cvv"
-                    maxLength="4"
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                    required
+
+            <PayPalScriptProvider
+                options={{
+                    "client-id": "AWrazNPFBycRxK4xBw8zccePJmUbk66_3vz3vjbZzZOZD4NlYGRb4ywrpak8sQU1gnmp3LQYupAXwKRO",
+                    currency: "USD"
+                }}
+            >
+                <PayPalButtons
+                    createOrder={(data, actions) => {
+                        return actions.order.create({
+                            purchase_units: [{
+                                description: "Better Dumpsters Today Services",
+                                amount: {
+                                    value: amount
+                                },
+                            }],
+                        });
+                    }}
+                    onApprove={(data, actions) => {
+                        return actions.order.capture().then((details) => {
+                            alert(`Payment successful! Transaction ID: ${details.id}`);
+                            setAmount('0');
+                        });
+                    }}
+                    onError={(err) => {
+                        alert('Payment Error: Please try again or contact support');
+                        console.error('PayPal Error:', err);
+                    }}
+                    style={{
+                        layout: 'vertical',
+                        color: 'blue',
+                        shape: 'rect',
+                        label: 'pay'
+                    }}
                 />
+            </PayPalScriptProvider>
+
+            <div className="p-4 bg-blue-50 rounded-lg">
+                <p className="text-sm text-blue-800 flex items-start">
+                    <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
+                    Payments are processed securely through PayPal. You can use your PayPal account or credit card.
+                </p>
             </div>
         </div>
-
-        <div>
-            <label htmlFor="billingAddress" className="block text-sm font-medium text-gray-700 mb-1">Billing Address</label>
-            <input
-                type="text"
-                id="billingAddress"
-                name="billingAddress"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-            />
-        </div>
-
-        <div>
-            <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">Amount to Charge</label>
-            <input
-                type="number"
-                id="amount"
-                name="amount"
-                min="0"
-                step="0.01"
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                required
-            />
-        </div>
-
-        <div className="p-4 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800 flex items-start">
-                <AlertCircle className="w-5 h-5 mr-2 flex-shrink-0 mt-0.5" />
-                By submitting this form, you authorize Better Dumpsters Today to charge the amount specified to your credit card.
-            </p>
-        </div>
-
-        <button
-            type="submit"
-            className="w-full bg-blue-700 text-white py-3 px-4 rounded-lg hover:bg-blue-800 transition flex items-center justify-center"
-        >
-            <CreditCard className="w-5 h-5 mr-2" />
-            Authorize Payment
-        </button>
-    </form>
-);
+    );
+};
 
 export default ContactPage;
